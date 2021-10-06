@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+    id 'com.adarshr.test-logger' version '3.0.0'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+group 'com.algaworks'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    junitVersion = '5.8.1'
+    hibernateVersion = '5.5.7.Final'
+    lombokversion = '1.18.20'
+}
+
+jar{
+    manifest {
+        attributes('Main-Class': 'com.algaworks.ecommerce.util.IniciarUnidadeDePersistencia')
+    }
+}
+
+dependencies {
+    implementation 'mysql:mysql-connector-java:8.0.26'
+    implementation "org.hibernate:hibernate-core:${hibernateVersion}"
+    implementation "org.projectlombok:lombok:${lombokversion}"
+
+    annotationProcessor "org.projectlombok:lombok:${lombokversion}"
+
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokversion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+test {
+    useJUnitPlatform()
+    testlogger {
+        theme 'mocha-parallel'
+        showExceptions true
+        slowThreshold 2000
+        showSummary true
+        showPassed true
+        showSkipped true
+        showFailed true
+        showStandardStreams true
+        showPassedStandardStreams true
+        showSkippedStandardStreams true
+        showFailedStandardStreams true
+    }
+}

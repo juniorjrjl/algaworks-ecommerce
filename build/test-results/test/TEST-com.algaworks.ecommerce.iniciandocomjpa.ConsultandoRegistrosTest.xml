@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-05T21:03:21" hostname="8b8fea0f98d5" time="0.139">
+  <properties/>
+  <testcase name="atualizarReferencia()" classname="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.134"/>
+  <testcase name="buscarPorIdentificador()" classname="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.004"/>
+  <system-out><![CDATA[Hibernate: 
+    
+    drop table if exists Produto
+Hibernate: 
+    
+    create table Produto (
+       id integer not null,
+        descricao varchar(255),
+        nome varchar(255),
+        preco decimal(19,2),
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    insert into Produto (id, nome, preco, descricao) values (1, 'Kindle', 499.0, 'Conheça o novo Kindle, agora com iluminação embutida ajustável, que permite que você leia em ambientes abertos ou fechados, a qualquer hora do dia.')
+Hibernate: 
+    select
+        produto0_.id as id1_0_0_,
+        produto0_.descricao as descrica2_0_0_,
+        produto0_.nome as nome3_0_0_,
+        produto0_.preco as preco4_0_0_ 
+    from
+        Produto produto0_ 
+    where
+        produto0_.id=?
+Hibernate: 
+    select
+        produto0_.id as id1_0_0_,
+        produto0_.descricao as descrica2_0_0_,
+        produto0_.nome as nome3_0_0_,
+        produto0_.preco as preco4_0_0_ 
+    from
+        Produto produto0_ 
+    where
+        produto0_.id=?
+Hibernate: 
+    select
+        produto0_.id as id1_0_0_,
+        produto0_.descricao as descrica2_0_0_,
+        produto0_.nome as nome3_0_0_,
+        produto0_.preco as preco4_0_0_ 
+    from
+        Produto produto0_ 
+    where
+        produto0_.id=?
+]]></system-out>
+  <system-err><![CDATA[Oct 05, 2021 9:03:20 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: Ecommerce-PU]
+Oct 05, 2021 9:03:20 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.5.7.Final
+Oct 05, 2021 9:03:20 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+Oct 05, 2021 9:03:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+Oct 05, 2021 9:03:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://db/algaworks_ecommerce?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC]
+Oct 05, 2021 9:03:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {password=****, user=root}
+Oct 05, 2021 9:03:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Oct 05, 2021 9:03:20 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+Oct 05, 2021 9:03:21 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+Oct 05, 2021 9:03:21 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1f992a3a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+Oct 05, 2021 9:03:21 PM org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2ac519dc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+Oct 05, 2021 9:03:21 PM org.hibernate.tool.schema.internal.exec.AbstractScriptSourceInput prepare
+INFO: HHH000476: Executing import script 'file:/algaworks-ecommerce/build/resources/main/META-INF/banco-de-dados/dados-iniciais.sql'
+Oct 05, 2021 9:03:21 PM org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Oct 05, 2021 9:03:21 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PoolState stop
+INFO: HHH10001008: Cleaning up connection pool [jdbc:mysql://db/algaworks_ecommerce?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC]
+]]></system-err>
+</testsuite>
