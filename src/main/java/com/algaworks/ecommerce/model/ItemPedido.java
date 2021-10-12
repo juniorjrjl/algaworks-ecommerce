@@ -5,15 +5,22 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class Cliente {
+public class ItemPedido {
 
     @Id
     private Integer id;
-    private String nome;
-    private SexoCliente sexo;
+
+    private Integer pedidoId;
+
+    private Integer produtoId;
+
+    private BigDecimal precoProduto;
+
+    private Integer quantidade;
 
 }

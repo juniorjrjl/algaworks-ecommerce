@@ -9,11 +9,11 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @Entity
-public class Cliente {
+public class Estoque {
 
     @Id
     private Integer id;
-    private String nome;
-    private SexoCliente sexo;
+    private Integer produtoId;
+    private Integer quantidade;
 
 }

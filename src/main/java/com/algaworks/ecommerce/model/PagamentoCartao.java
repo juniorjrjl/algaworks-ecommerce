@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,11 +8,15 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @Entity
-public class Cliente {
+public class PagamentoCartao {
 
     @Id
     private Integer id;
-    private String nome;
-    private SexoCliente sexo;
+
+    private Integer pedidoId;
+
+    private StatusPagamento status;
+
+    private String numero;
 
 }

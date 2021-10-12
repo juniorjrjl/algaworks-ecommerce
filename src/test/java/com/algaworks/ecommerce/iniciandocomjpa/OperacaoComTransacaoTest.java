@@ -100,4 +100,18 @@ public class OperacaoComTransacaoTest {
         assertThat(produtoVerificacaoMerge).isNotNull();
     }
 
+    @Test
+    public void impedirOperacaoComBancoDeDados(@EManager final EntityManager entityManager){
+        var produto = entityManager.find(Produto.class, 1);
+        entityManager.detach(produto);
+
+        entityManager.getTransaction().begin();
+        produto.setNome("Kindle Paperwithe");
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+        var produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        assertThat(produtoVerificacao.getNome()).isEqualTo("Kindle");
+    }
+
 }

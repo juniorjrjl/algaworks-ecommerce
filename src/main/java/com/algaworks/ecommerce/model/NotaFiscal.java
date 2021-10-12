@@ -5,15 +5,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class Cliente {
+public class NotaFiscal {
 
     @Id
     private Integer id;
-    private String nome;
-    private SexoCliente sexo;
 
+    private Integer pedidoId;
+
+    private String xml;
+
+    private Date dataEmissao;
 }
