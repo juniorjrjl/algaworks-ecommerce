@@ -1,7 +1,7 @@
 package com.algaworks.ecommerce.iniciandocomjpa;
 
-import com.algaworks.ecommerce.iniciandocomjpa.extension.EManager;
-import com.algaworks.ecommerce.iniciandocomjpa.extension.EntityManagerExtension;
+import com.algaworks.ecommerce.extension.EManager;
+import com.algaworks.ecommerce.extension.EntityManagerExtension;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;

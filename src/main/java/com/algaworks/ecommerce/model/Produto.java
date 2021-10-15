@@ -5,11 +5,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "produto")
 public class Produto {
 
     @Id

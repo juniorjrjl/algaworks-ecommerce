@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.iniciandocomjpa.extension;
+package com.algaworks.ecommerce.extension;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -9,6 +9,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({PARAMETER, FIELD})
 @Retention(RUNTIME)
-public @interface EMFactory {
+public @interface EManager {
 
 }

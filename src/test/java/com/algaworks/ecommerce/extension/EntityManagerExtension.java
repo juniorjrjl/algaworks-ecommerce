@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.iniciandocomjpa.extension;
+package com.algaworks.ecommerce.extension;
 
 import org.junit.jupiter.api.extension.*;
 
