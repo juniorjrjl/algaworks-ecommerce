@@ -3,11 +3,10 @@ package com.algaworks.ecommerce.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
@@ -16,11 +15,14 @@ import java.math.BigDecimal;
 public class ItemPedido {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
-    @Column(name = "pedido_id")
-    private Integer pedidoId;
-    @Column(name = "produto_id")
-    private Integer produtoId;
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
     @Column(name = "preco_produto")
     private BigDecimal precoProduto;
     private Integer quantidade;

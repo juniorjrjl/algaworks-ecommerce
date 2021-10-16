@@ -36,13 +36,12 @@ public class TransacaoClienteTeste {
     @Test
     public void inserirObjetoComMerge(@EManager final EntityManager entityManager){
         var cliente = new Cliente();
-        cliente.setId(3);
         cliente.setNome("Juca Barros");
         entityManager.getTransaction().begin();
-        entityManager.merge(cliente);
+        cliente = entityManager.merge(cliente);
         entityManager.getTransaction().commit();
         entityManager.clear();
-        var clienteVerificacao = entityManager.find(Cliente.class, 1);
+        var clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
         assertThat(clienteVerificacao).isNotNull();
     }
 

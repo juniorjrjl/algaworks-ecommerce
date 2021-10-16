@@ -40,7 +40,6 @@ public class OperacaoComTransacaoTest {
     @Test
     public void inserirObjeto(@EManager final EntityManager entityManager){
         var produto = new Produto();
-        produto.setId(2);
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para suas fotos");
         produto.setPreco(new BigDecimal(5000));
@@ -56,13 +55,12 @@ public class OperacaoComTransacaoTest {
     @Test
     public void inserirObjetoComMerge(@EManager final EntityManager entityManager){
         var produto = new Produto();
-        produto.setId(4);
         produto.setNome("Micofone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som");
         produto.setPreco(new BigDecimal(1000));
 
         entityManager.getTransaction().begin();
-        entityManager.merge(produto);
+        produto = entityManager.merge(produto);
         entityManager.getTransaction().commit();
         entityManager.clear();
         var produtoVerificacao = entityManager.find(Produto.class, produto.getId());
@@ -72,7 +70,6 @@ public class OperacaoComTransacaoTest {
     @Test
     public void mostrarDiferencaPersistMerge(@EManager final EntityManager entityManager){
         var produtoPersist = new Produto();
-        produtoPersist.setId(5);
         produtoPersist.setNome("Smartphone One Plus");
         produtoPersist.setDescricao("O processador mais rápido");
         produtoPersist.setPreco(new BigDecimal(2000));
@@ -86,7 +83,6 @@ public class OperacaoComTransacaoTest {
         assertThat(produtoVerificacaoPersist).isNotNull();
 
         var produtoMerge = new Produto();
-        produtoMerge.setId(6);
         produtoMerge.setNome("Notebbok Dell");
         produtoMerge.setDescricao("O melhor da categoria");
         produtoMerge.setPreco(new BigDecimal(2000));

@@ -27,7 +27,6 @@ public class MapeamentoObjetoEmbutidoTest {
         enderecoEntregaPedido.setCidade("Uberlandia");
         enderecoEntregaPedido.setEstado("MG");
         var pedido = new Pedido();
-        pedido.setId(1);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));

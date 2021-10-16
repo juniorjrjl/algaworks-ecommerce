@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class EstrategiaChavePrimariaTest {
 
     @Test
-    public void testarEstrategiaAuto(@EManager final EntityManager entityManager){
+    public void testarEstrategiaChave(@EManager final EntityManager entityManager){
         var categoria = new Categoria();
         categoria.setNome("Eletrônicos");
 

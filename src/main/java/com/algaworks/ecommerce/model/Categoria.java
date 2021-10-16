@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -12,7 +14,7 @@ import javax.persistence.*;
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     private String nome;
     @Column(name = "categoria_pai_id")

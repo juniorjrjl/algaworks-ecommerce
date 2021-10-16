@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -11,6 +13,7 @@ import javax.persistence.*;
 public class PagamentoCartao {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     @Column(name = "pedido_id")
     private Integer pedidoId;

@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -14,7 +16,11 @@ import java.time.LocalDateTime;
 public class Pedido {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido;
     @Column(name = "data_conclusão")

@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -12,6 +14,7 @@ import javax.persistence.*;
 public class Cliente {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     private String nome;
     @Enumerated(EnumType.STRING)
