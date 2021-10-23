@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.mapeamentobasico;
 
 import com.algaworks.ecommerce.extension.EManager;
 import com.algaworks.ecommerce.extension.EntityManagerExtension;
+import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.EnderecoEntregaPedido;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.StatusPedido;
@@ -31,6 +32,7 @@ public class MapeamentoObjetoEmbutidoTest {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(new BigDecimal(1000));
         pedido.setEnderecoEntrega(enderecoEntregaPedido);
+        pedido.setCliente(entityManager.find(Cliente.class, 1));
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);

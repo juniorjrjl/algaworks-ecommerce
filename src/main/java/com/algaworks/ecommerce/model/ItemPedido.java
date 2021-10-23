@@ -17,10 +17,10 @@ public class ItemPedido {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "produto_id")
     private Produto produto;
     @Column(name = "preco_produto")

@@ -3,3 +3,8 @@ insert into produto (nome, preco, descricao) values ('Câmera GoPro Hero 7', 140
 
 insert into cliente (nome) values ('Fernando Medeiros');
 insert into cliente (nome) values ('Marcos Mariano');
+
+insert into pedido (id, cliente_id, data_pedido, total, status) values (1, 1, sysdate(), 100.0, 'AGUARDANDO');
+insert into item_pedido (id, pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 1, 5.0, 2);
+
+insert into categoria (id, nome) values (1, 'Eletrônicos');

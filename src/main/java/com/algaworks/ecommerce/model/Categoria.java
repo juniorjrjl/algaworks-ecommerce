@@ -1,9 +1,13 @@
 package com.algaworks.ecommerce.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -17,7 +21,16 @@ public class Categoria {
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     private String nome;
-    @Column(name = "categoria_pai_id")
-    private Integer categoriaPaiId;
+    @ManyToOne
+    @JoinColumn(name = "categoria_pai")
+    private Categoria categoriaPai;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "categoriaPai")
+    private List<Categoria> categorias;
+
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos;
 
 }

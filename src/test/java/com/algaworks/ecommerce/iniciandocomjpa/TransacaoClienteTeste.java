@@ -17,6 +17,10 @@ public class TransacaoClienteTeste {
     public void removerObjeto(@EManager final EntityManager entityManager){
         var cliente = entityManager.find(Cliente.class, 1);
         entityManager.getTransaction().begin();
+        cliente.getPedidos().forEach(p ->{
+            p.getItensPedido().forEach(entityManager::remove);
+            entityManager.remove(p);
+        });
         entityManager.remove(cliente);
         entityManager.getTransaction().commit();
         var clienteVerificacao = entityManager.find(Cliente.class, 1);
