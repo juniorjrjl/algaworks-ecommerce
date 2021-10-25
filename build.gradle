@@ -18,8 +18,8 @@ repositories {
 
 ext{
     junitVersion = '5.8.1'
-    hibernateVersion = '5.5.7.Final'
-    lombokversion = '1.18.20'
+    hibernateVersion = '5.5.8.Final'
+    lombokversion = '1.18.22'
 }
 
 jar{
@@ -61,7 +61,7 @@ test {
 sourceSets {
     java {
         main {
-            output.resourcesDir = java.outputDir
+            output.resourcesDir = java.classesDirectory
         }
     }
 }

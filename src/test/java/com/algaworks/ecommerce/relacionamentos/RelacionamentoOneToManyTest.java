@@ -21,7 +21,7 @@ public class RelacionamentoOneToManyTest {
 
         var pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
-        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setCliente(cliente);
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
@@ -43,7 +43,7 @@ public class RelacionamentoOneToManyTest {
 
         var pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
-        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setCliente(cliente);
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);

@@ -20,9 +20,12 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
     private String nome;
+
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
+
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "cliente")

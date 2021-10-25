@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.listener.GenericoListener;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
+@EntityListeners({GenericoListener.class})
 @Entity
 @Table(name = "produto")
 public class Produto {
@@ -20,8 +22,11 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
     private String nome;
+
     private String descricao;
+
     private BigDecimal preco;
 
     @EqualsAndHashCode.Exclude

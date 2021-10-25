@@ -16,9 +16,11 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
     @OneToOne(optional = false)
     @JoinColumn(name = "produto_id")
     private Produto produto;
+
     private Integer quantidade;
 
 }

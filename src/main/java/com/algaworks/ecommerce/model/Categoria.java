@@ -20,7 +20,9 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
     private String nome;
+
     @ManyToOne
     @JoinColumn(name = "categoria_pai")
     private Categoria categoriaPai;

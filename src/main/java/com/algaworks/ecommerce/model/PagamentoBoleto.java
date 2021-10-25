@@ -16,10 +16,13 @@ public class PagamentoBoleto {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
     @Column(name = "pedido_id")
     private Integer pedidoId;
+
     @Enumerated(EnumType.STRING)
     private StatusPagamento status;
+
     @Column(name = "codigo_barras")
     private String codigoBarras;
 }
