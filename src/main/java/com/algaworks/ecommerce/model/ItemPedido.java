@@ -1,12 +1,11 @@
 package com.algaworks.ecommerce.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
@@ -14,14 +13,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "item_pedido")
 public class ItemPedido {
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+    @EmbeddedId
+    private ItemPedidoId id;
 
+    @MapsId("pedidoId")
+    @EqualsAndHashCode.Exclude
     @ManyToOne(optional = false)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
+    @MapsId("produtoId")
+    @EqualsAndHashCode.Exclude
     @ManyToOne(optional = false)
     @JoinColumn(name = "produto_id")
     private Produto produto;

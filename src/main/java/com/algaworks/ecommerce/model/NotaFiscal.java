@@ -15,9 +15,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class NotaFiscal {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "pedido_id")
     private Integer id;
 
+    @MapsId
     @JoinColumn(name = "pedido_id")
     @OneToOne(optional = false)
     private Pedido pedido;

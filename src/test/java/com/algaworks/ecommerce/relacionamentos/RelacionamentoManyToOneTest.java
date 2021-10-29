@@ -41,21 +41,22 @@ public class RelacionamentoManyToOneTest {
         var cliente = entityManager.find(Cliente.class, 1);
         var produto = entityManager.find(Produto.class, 1);
 
+        entityManager.getTransaction().begin();
         var pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setDataCriacao(LocalDateTime.now());
         pedido.setCliente(cliente);
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
+        entityManager.persist(pedido);
 
         var itemPedido = new ItemPedido();
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
+        itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
 
-        entityManager.getTransaction().begin();
-        entityManager.persist(pedido);
         entityManager.persist(itemPedido);
         entityManager.getTransaction().commit();
 
@@ -63,7 +64,7 @@ public class RelacionamentoManyToOneTest {
 
         var pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
         assertThat(pedidoVerificacao.getCliente()).isNotNull();
-        var itemPedidoVerificacao = entityManager.find(ItemPedido.class, itemPedido.getId());
+        var itemPedidoVerificacao = entityManager.find(ItemPedido.class, new ItemPedidoId(pedido.getId(), produto.getId()));
         assertThat(itemPedidoVerificacao.getPedido()).isNotNull();
         assertThat(itemPedidoVerificacao.getProduto()).isNotNull();
     }

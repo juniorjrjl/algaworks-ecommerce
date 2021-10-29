@@ -41,18 +41,22 @@ public class RelacionamentoOneToManyTest {
         var cliente = entityManager.find(Cliente.class, 1);
         var produto = entityManager.find(Produto.class, 1);
 
+        entityManager.getTransaction().begin();
         var pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setDataCriacao(LocalDateTime.now());
         pedido.setCliente(cliente);
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
+        entityManager.persist(pedido);
+        entityManager.getTransaction().commit();
 
         var itemPedido = new ItemPedido();
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
+        itemPedido.setId(new ItemPedidoId());
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
