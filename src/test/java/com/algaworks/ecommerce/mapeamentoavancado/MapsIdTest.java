@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.extension.EManager;
 import com.algaworks.ecommerce.extension.EntityManagerExtension;
 import com.algaworks.ecommerce.model.*;
+import com.algaworks.ecommerce.util.ManipulaArquivo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -22,7 +23,7 @@ public class MapsIdTest {
         var notaFiscal = new NotaFiscal();
         notaFiscal.setPedido(pedido);
         notaFiscal.setDataEmissao(new Date());
-        notaFiscal.setXml("<xml/>");
+        notaFiscal.setXml(ManipulaArquivo.carregarArquivo("nota-fiscal.xml"));
 
         entityManager.getTransaction().begin();
         entityManager.persist(notaFiscal);

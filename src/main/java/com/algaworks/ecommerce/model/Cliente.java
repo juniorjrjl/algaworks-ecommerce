@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 import java.util.List;
+import java.util.Map;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -23,6 +24,9 @@ public class Cliente {
 
     private String nome;
 
+    @Transient
+    private String primeiroNome;
+
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
 
@@ -30,5 +34,21 @@ public class Cliente {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
+
+    @ElementCollection
+    @CollectionTable(name = "cliente_contato", joinColumns = @JoinColumn(name = "cliente_id"))
+    @MapKeyColumn(name = "tipo")
+    @Column(name = "descricao")
+    private Map<String, String> contatos;
+
+    @PostLoad
+    private void configurarPrimeiroNome(){
+        if (nome != null && !nome.isBlank()){
+            var index = nome.indexOf(" ");
+            if (index > -1){
+                primeiroNome = nome.substring(0, index);
+            }
+        }
+    }
 
 }

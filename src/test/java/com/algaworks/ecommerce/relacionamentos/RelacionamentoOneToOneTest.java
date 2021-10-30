@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.relacionamentos;
 import com.algaworks.ecommerce.extension.EManager;
 import com.algaworks.ecommerce.extension.EntityManagerExtension;
 import com.algaworks.ecommerce.model.*;
+import com.algaworks.ecommerce.util.ManipulaArquivo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -38,7 +39,7 @@ public class RelacionamentoOneToOneTest {
         var pedido = entityManager.find(Pedido.class, 1);
 
         var notaFiscal = new NotaFiscal();
-        notaFiscal.setXml("TESTE");
+        notaFiscal.setXml(ManipulaArquivo.carregarArquivo("nota-fiscal.xml"));
         notaFiscal.setDataEmissao(new Date());
         notaFiscal.setPedido(pedido);
 
