@@ -2,28 +2,20 @@ package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFicalListener;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString(callSuper = true)
 @EntityListeners({GerarNotaFicalListener.class, GenericoListener.class})
 @Entity
 @Table(name = "pedido")
-public class Pedido {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+public class Pedido  extends EntidadeBaseInteger{
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")

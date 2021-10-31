@@ -1,11 +1,12 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Embeddable;
 
-@Data
+@Getter
+@Setter
+@ToString(callSuper = true)
 @NoArgsConstructor
 @Embeddable
 public class EnderecoEntregaPedido {

@@ -1,21 +1,18 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString(callSuper = true)
 @Entity
 @Table(name = "estoque")
-public class Estoque {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+public class Estoque  extends EntidadeBaseInteger{
 
     @OneToOne(optional = false)
     @JoinColumn(name = "produto_id")

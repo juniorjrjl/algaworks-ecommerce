@@ -1,9 +1,6 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,18 +8,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@ToString(callSuper = true)
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
 @Table(name = "cliente")
-public class Cliente {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
+public class Cliente extends EntidadeBaseInteger{
 
     private String nome;
 
@@ -37,7 +29,6 @@ public class Cliente {
     private LocalDate dataNascimento;
 
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
 

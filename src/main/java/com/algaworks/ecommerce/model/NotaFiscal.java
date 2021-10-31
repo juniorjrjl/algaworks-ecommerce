@@ -1,22 +1,16 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString(callSuper = true)
 @Entity
 @Table(name = "nota_fiscla")
-public class NotaFiscal {
-
-    @Id
-    @Column(name = "pedido_id")
-    private Integer id;
+public class NotaFiscal  extends EntidadeBaseInteger{
 
     @MapsId
     @JoinColumn(name = "pedido_id")

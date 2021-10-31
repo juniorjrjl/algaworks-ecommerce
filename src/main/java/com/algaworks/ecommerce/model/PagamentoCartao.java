@@ -4,17 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString(callSuper = true)
 @Entity
 @Table(name = "pagamento_cartao")
-public class PagamentoCartao {
-
-    @Id
-    @Column(name = "pedido_id")
-    private Integer id;
+public class PagamentoCartao  extends EntidadeBaseInteger{
 
     @MapsId
     @JoinColumn(name = "pedido_id")
