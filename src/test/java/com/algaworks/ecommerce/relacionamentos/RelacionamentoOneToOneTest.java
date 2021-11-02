@@ -21,7 +21,7 @@ public class RelacionamentoOneToOneTest {
     public void verificarRelacionamento(@EManager final EntityManager entityManager){
         var pedido = entityManager.find(Pedido.class, 1);
         var pagamentoCartao = new PagamentoCartao();
-        pagamentoCartao.setNumero("123");
+        pagamentoCartao.setNumeroCartao("123");
         pagamentoCartao.setStatus(PROCESSANDO);
         pagamentoCartao.setPedido(pedido);
 
@@ -31,7 +31,7 @@ public class RelacionamentoOneToOneTest {
 
         entityManager.clear();
         var pedidoVerificacao = entityManager.find(Pedido.class, 1);
-        assertThat(pedidoVerificacao.getPagamentoCartao()).isNotNull();
+        assertThat(pedidoVerificacao.getPagamento()).isNotNull();
     }
 
     @Test

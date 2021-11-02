@@ -41,7 +41,7 @@ public class MapsIdTest {
         var pedido = entityManager.find(Pedido.class, 1);
 
         var pagamentoCartao = new PagamentoCartao();
-        pagamentoCartao.setNumero("123");
+        pagamentoCartao.setNumeroCartao("123");
         pagamentoCartao.setPedido(pedido);
         pagamentoCartao.setStatus(StatusPagamento.PROCESSANDO);
 

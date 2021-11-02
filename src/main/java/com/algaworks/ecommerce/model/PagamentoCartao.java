@@ -1,24 +1,21 @@
 package com.algaworks.ecommerce.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
 @Entity
-@Table(name = "pagamento_cartao")
-public class PagamentoCartao  extends EntidadeBaseInteger{
+@DiscriminatorValue("cartao")
+public class PagamentoCartao  extends Pagamento{
 
-    @MapsId
-    @JoinColumn(name = "pedido_id")
-    @OneToOne(optional = false)
-    private Pedido pedido;
-
-    @Enumerated(EnumType.STRING)
-    private StatusPagamento status;
-
-    private String numero;
+    @Column(name = "numero_cartao")
+    private String numeroCartao;
 
 }
