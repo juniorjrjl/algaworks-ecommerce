@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -43,6 +44,7 @@ public class OperacaoComTransacaoTest {
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para suas fotos");
         produto.setPreco(new BigDecimal(5000));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(produto);
@@ -58,6 +60,7 @@ public class OperacaoComTransacaoTest {
         produto.setNome("Micofone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som");
         produto.setPreco(new BigDecimal(1000));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         produto = entityManager.merge(produto);
@@ -73,6 +76,7 @@ public class OperacaoComTransacaoTest {
         produtoPersist.setNome("Smartphone One Plus");
         produtoPersist.setDescricao("O processador mais rápido");
         produtoPersist.setPreco(new BigDecimal(2000));
+        produtoPersist.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(produtoPersist);// o persist inclui a instancia no entityManager
@@ -86,6 +90,7 @@ public class OperacaoComTransacaoTest {
         produtoMerge.setNome("Notebbok Dell");
         produtoMerge.setDescricao("O melhor da categoria");
         produtoMerge.setPreco(new BigDecimal(2000));
+        produtoMerge.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         produtoMerge = entityManager.merge(produtoMerge);// o merge faz uma cópia da instancia e retorna essa copia

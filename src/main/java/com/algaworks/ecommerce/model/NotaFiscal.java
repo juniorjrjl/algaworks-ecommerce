@@ -13,13 +13,14 @@ import java.util.Date;
 public class NotaFiscal  extends EntidadeBaseInteger{
 
     @MapsId
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", nullable = false, foreignKey = @ForeignKey(name = "fk_nota_fiscal_pedido"))
     @OneToOne(optional = false)
     private Pedido pedido;
 
     @Lob
+    @Column(nullable = false)
     private byte[] xml;
 
-    @Column(name = "data_emissao")
+    @Column(name = "data_emissao", nullable = false)
     private Date dataEmissao;
 }

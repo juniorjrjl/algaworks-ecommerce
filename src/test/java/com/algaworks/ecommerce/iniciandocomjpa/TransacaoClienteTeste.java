@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.iniciandocomjpa;
 import com.algaworks.ecommerce.extension.EManager;
 import com.algaworks.ecommerce.extension.EntityManagerExtension;
 import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.SexoCliente;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -12,20 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(EntityManagerExtension.class)
 public class TransacaoClienteTeste {
-
-    @Test
-    public void removerObjeto(@EManager final EntityManager entityManager){
-        var cliente = entityManager.find(Cliente.class, 1);
-        entityManager.getTransaction().begin();
-        cliente.getPedidos().forEach(p ->{
-            p.getItensPedido().forEach(entityManager::remove);
-            entityManager.remove(p);
-        });
-        entityManager.remove(cliente);
-        entityManager.getTransaction().commit();
-        var clienteVerificacao = entityManager.find(Cliente.class, 1);
-        assertThat(clienteVerificacao).isNull();
-    }
 
     @Test
     public void atualizarObjeto(@EManager final EntityManager entityManager){
@@ -41,6 +28,8 @@ public class TransacaoClienteTeste {
     public void inserirObjetoComMerge(@EManager final EntityManager entityManager){
         var cliente = new Cliente();
         cliente.setNome("Juca Barros");
+        cliente.setCpf("123");
+        cliente.setSexo(SexoCliente.MASCULINO);
         entityManager.getTransaction().begin();
         cliente = entityManager.merge(cliente);
         entityManager.getTransaction().commit();

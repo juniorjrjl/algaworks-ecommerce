@@ -3,7 +3,6 @@ package com.algaworks.ecommerce.mapeamentoavancado;
 import com.algaworks.ecommerce.extension.EManager;
 import com.algaworks.ecommerce.extension.EntityManagerExtension;
 import com.algaworks.ecommerce.model.*;
-import org.assertj.core.api.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -47,7 +46,7 @@ public class ChaveCompostaTest {
 
         var pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
         assertThat(pedidoVerificacao).isNotNull();
-        assertThat(pedidoVerificacao.getItensPedido()).isNotEmpty();
+        assertThat(pedidoVerificacao.getItens()).isNotEmpty();
     }
 
     @Test

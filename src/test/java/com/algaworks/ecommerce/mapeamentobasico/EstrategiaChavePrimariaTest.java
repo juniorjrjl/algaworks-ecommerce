@@ -16,7 +16,7 @@ public class EstrategiaChavePrimariaTest {
     @Test
     public void testarEstrategiaChave(@EManager final EntityManager entityManager){
         var categoria = new Categoria();
-        categoria.setNome("Eletrônicos");
+        categoria.setNome("Portateis");
 
         entityManager.getTransaction().begin();
         entityManager.persist(categoria);

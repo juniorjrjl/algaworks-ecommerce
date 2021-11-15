@@ -20,6 +20,8 @@ public class HerancaTest {
     public void salvarCliente(@EManager final EntityManager entityManager){
         var cliente = new Cliente();
         cliente.setNome("Fernanda Morais");
+        cliente.setSexo(SexoCliente.MASCULINO);
+        cliente.setCpf("963");
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);

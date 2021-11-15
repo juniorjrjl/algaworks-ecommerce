@@ -16,11 +16,12 @@ import javax.persistence.*;
 public abstract class Pagamento extends EntidadeBaseInteger{
 
     @MapsId
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", nullable = false, foreignKey = @ForeignKey(name = "fk_pagamento_pedido"))
     @OneToOne(optional = false)
     private Pedido pedido;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 30, nullable = false)
     private StatusPagamento status;
 
 

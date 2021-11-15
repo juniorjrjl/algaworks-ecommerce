@@ -16,10 +16,10 @@ public class RemovendoEntidadesReferenciadasTest {
     @Test
     public void removendoEntidadeRelacionada(@EManager final EntityManager entityManager){
         var pedido = entityManager.find(Pedido.class, 1);
-        assertThat(pedido.getItensPedido()).isNotEmpty();
+        assertThat(pedido.getItens()).isNotEmpty();
 
         entityManager.getTransaction().begin();
-        pedido.getItensPedido().forEach(entityManager::remove);
+        pedido.getItens().forEach(entityManager::remove);
         entityManager.remove(pedido);
         entityManager.getTransaction().commit();
         entityManager.clear();

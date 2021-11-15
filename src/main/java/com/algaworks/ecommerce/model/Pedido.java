@@ -18,10 +18,10 @@ import java.util.List;
 public class Pedido  extends EntidadeBaseInteger{
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", nullable = false, foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
     private Cliente cliente;
 
-    @Column(name = "data_criacao", updatable = false)
+    @Column(name = "data_criacao", updatable = false, nullable = false)
     private LocalDateTime dataCriacao;
 
     @Column(name = "data_ultima_atualizacao", insertable = false)
@@ -30,9 +30,11 @@ public class Pedido  extends EntidadeBaseInteger{
     @Column(name = "data_conclusão")
     private LocalDateTime dataConlusao;
 
+    @Column(precision = 19, scale = 2, nullable = false)
     private BigDecimal total;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 30, nullable = false)
     private StatusPedido status;
 
     @Embedded
@@ -40,22 +42,24 @@ public class Pedido  extends EntidadeBaseInteger{
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> itensPedido;
+    @OneToMany(mappedBy = "pedido", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<ItemPedido> itens;
 
+    @ToString.Exclude
     @OneToOne(mappedBy = "pedido")
     private Pagamento pagamento;
 
     @OneToOne(mappedBy = "pedido")
     private NotaFiscal notaFiscal;
 
-    public boolean isPagp(){
+    public boolean isPago(){
         return status == StatusPedido.PAGO;
     }
 
     private void calcularTotal() {
-        if (itensPedido != null) {
-            total = itensPedido.stream().map(ItemPedido::getPrecoProduto)
+        total = BigDecimal.ZERO;
+        if (itens != null) {
+            total = itens.stream().map(i -> new BigDecimal(i.getQuantidade()).multiply(i.getPrecoProduto()))
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
         }
     }

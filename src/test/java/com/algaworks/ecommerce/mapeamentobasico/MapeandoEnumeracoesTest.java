@@ -19,6 +19,7 @@ public class MapeandoEnumeracoesTest {
         var cliente = new Cliente();
         cliente.setNome("José Mineiro");
         cliente.setSexo(MASCULINO);
+        cliente.setCpf("159");
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);

@@ -19,18 +19,19 @@ public class ItemPedido {
     @MapsId("pedidoId")
     @EqualsAndHashCode.Exclude
     @ManyToOne(optional = false)
-    @JoinColumn(name = "pedido_id")
+    @JoinColumn(name = "pedido_id", nullable = false, foreignKey = @ForeignKey(name = "fk_item_pedido_pedido"))
     private Pedido pedido;
 
     @MapsId("produtoId")
     @EqualsAndHashCode.Exclude
     @ManyToOne(optional = false)
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "produto_id", nullable = false, foreignKey = @ForeignKey(name = "fk_item_pedido_produto"))
     private Produto produto;
 
-    @Column(name = "preco_produto")
+    @Column(name = "preco_produto", precision = 19, scale = 2)
     private BigDecimal precoProduto;
 
+    @Column(nullable = false)
     private Integer quantidade;
 
     @Override

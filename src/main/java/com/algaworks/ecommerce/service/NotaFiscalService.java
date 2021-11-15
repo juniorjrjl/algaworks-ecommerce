@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.serice;
+package com.algaworks.ecommerce.service;
 
 import com.algaworks.ecommerce.model.Pedido;
 

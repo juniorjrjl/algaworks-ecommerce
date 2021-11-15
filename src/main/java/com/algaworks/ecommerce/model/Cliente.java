@@ -12,16 +12,22 @@ import java.util.Map;
 @Setter
 @Entity
 @ToString(callSuper = true)
-@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
-@Table(name = "cliente")
+@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"), foreignKey = @ForeignKey(name = "fk_cliente_cliente_detalhe"))
+@Table(name = "cliente",
+        uniqueConstraints = {@UniqueConstraint(name = "unq_cpf", columnNames = {"cpf"})},
+        indexes = {@Index(name = "idx_nome", columnList = "nome")})
 public class Cliente extends EntidadeBaseInteger{
 
+    @Column(length = 100, nullable = false)
     private String nome;
+
+    @Column(length = 100, nullable = false)
+    private String cpf;
 
     @Transient
     private String primeiroNome;
 
-    @Column(table = "cliente_detalhe")
+    @Column(table = "cliente_detalhe", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
 
@@ -33,7 +39,7 @@ public class Cliente extends EntidadeBaseInteger{
     private List<Pedido> pedidos;
 
     @ElementCollection
-    @CollectionTable(name = "cliente_contato", joinColumns = @JoinColumn(name = "cliente_id"))
+    @CollectionTable(name = "cliente_contato", joinColumns = @JoinColumn(name = "cliente_id", foreignKey = @ForeignKey(name = "fk_cliente_cliente_contato")))
     @MapKeyColumn(name = "tipo")
     @Column(name = "descricao")
     private Map<String, String> contatos;
