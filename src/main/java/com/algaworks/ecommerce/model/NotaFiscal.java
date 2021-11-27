@@ -9,7 +9,7 @@ import java.util.Date;
 @Setter
 @ToString(callSuper = true)
 @Entity
-@Table(name = "nota_fiscla")
+@Table(name = "nota_fiscal")
 public class NotaFiscal  extends EntidadeBaseInteger{
 
     @MapsId
@@ -21,6 +21,7 @@ public class NotaFiscal  extends EntidadeBaseInteger{
     @Column(nullable = false)
     private byte[] xml;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_emissao", nullable = false)
     private Date dataEmissao;
 }

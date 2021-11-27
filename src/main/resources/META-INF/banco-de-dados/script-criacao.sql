@@ -1,0 +1,1 @@
+create function acima_media_faturamento(valor double) returns boolean reads sql data return valor > (select avg(total) from pedido);

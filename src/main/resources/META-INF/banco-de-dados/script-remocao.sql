@@ -1,0 +1,1 @@
+drop function if exists acima_media_faturamento;

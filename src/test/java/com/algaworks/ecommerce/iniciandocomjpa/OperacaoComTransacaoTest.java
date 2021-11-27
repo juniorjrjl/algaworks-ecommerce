@@ -17,11 +17,11 @@ public class OperacaoComTransacaoTest {
 
     @Test
     public void removerObjeto(@EManager final EntityManager entityManager){
-        var produto = entityManager.find(Produto.class, 3);
+        var produto = entityManager.find(Produto.class, 4);
         entityManager.getTransaction().begin();
         entityManager.remove(produto);
         entityManager.getTransaction().commit();
-        var produtoVerificacao = entityManager.find(Produto.class, 3);
+        var produtoVerificacao = entityManager.find(Produto.class, 4);
         assertThat(produtoVerificacao).isNull();
     }
 

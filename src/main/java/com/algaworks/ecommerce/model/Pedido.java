@@ -27,7 +27,7 @@ public class Pedido  extends EntidadeBaseInteger{
     @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao ;
 
-    @Column(name = "data_conclusão")
+    @Column(name = "data_conclusao")
     private LocalDateTime dataConlusao;
 
     @Column(precision = 19, scale = 2, nullable = false)

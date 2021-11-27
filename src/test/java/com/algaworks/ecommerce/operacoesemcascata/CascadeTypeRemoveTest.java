@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CascadeTypeRemoveTest{
 
     @Test
-    public void removerItensOrfaos(@EManager EntityManager entityManager) {
+    public void removerItensOrfaos(@EManager final EntityManager entityManager) {
         var pedido = entityManager.find(Pedido.class, 1);
 
         assertThat(pedido.getItens()).isNotEmpty();
@@ -34,7 +34,7 @@ public class CascadeTypeRemoveTest{
     }
 
     @Test
-    public void removerRelacaoProdutoCategoria(@EManager EntityManager entityManager) {
+    public void removerRelacaoProdutoCategoria(@EManager final EntityManager entityManager) {
         var produto = entityManager.find(Produto.class, 1);
 
         assertThat(produto.getCategorias()).isNotEmpty();
@@ -50,7 +50,7 @@ public class CascadeTypeRemoveTest{
     }
 
     //@Test
-    public void removerPedidoEItens(@EManager EntityManager entityManager) {
+    public void removerPedidoEItens(@EManager final EntityManager entityManager) {
         var pedido = entityManager.find(Pedido.class, 1);
 
         entityManager.getTransaction().begin();
@@ -64,7 +64,7 @@ public class CascadeTypeRemoveTest{
     }
 
     //@Test
-    public void removerItemPedidoEPedido(@EManager EntityManager entityManager) {
+    public void removerItemPedidoEPedido(@EManager final EntityManager entityManager) {
         var itemPedido = entityManager.find(ItemPedido.class, new ItemPedidoId(1, 1));
 
         entityManager.getTransaction().begin();

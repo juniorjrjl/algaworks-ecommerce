@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CascadeTypeMergeTest {
 
     //@Test
-    public void atualizarProdutoComCategoria(@EManager EntityManager entityManager) {
+    public void atualizarProdutoComCategoria(@EManager final EntityManager entityManager) {
         var produto = new Produto();
         produto.setId(1);
         produto.setDataUltimaAtualizacao(LocalDateTime.now());
@@ -42,7 +42,7 @@ public class CascadeTypeMergeTest {
     }
 
     //@Test
-    public void atualizarPedidoComItens(@EManager EntityManager entityManager) {
+    public void atualizarPedidoComItens(@EManager final EntityManager entityManager) {
         var cliente = entityManager.find(Cliente.class, 1);
         var produto = entityManager.find(Produto.class, 1);
 
@@ -73,7 +73,7 @@ public class CascadeTypeMergeTest {
     }
 
     //@Test
-    public void atualizarItemPedidoComPedido(@EManager EntityManager entityManager) {
+    public void atualizarItemPedidoComPedido(@EManager final EntityManager entityManager) {
         var cliente = entityManager.find(Cliente.class, 1);
         var produto = entityManager.find(Produto.class, 1);
 
