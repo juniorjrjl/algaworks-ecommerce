@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(EntityManagerExtension.class)
 public class FuncoesNativasTest {
 
-    @Test
+    /*@Test
     public void aplicarFuncaoNativas(@EManager final EntityManager entityManager) {
         var jpql = "select function('dayname', p.dataCriacao) from Pedido p " +
                 " where function('acima_media_faturamento', p.total) = 1";
@@ -23,6 +23,6 @@ public class FuncoesNativasTest {
         assertThat(lista).isNotEmpty();
 
         lista.forEach(System.out::println);
-    }
+    }*/
 
 }

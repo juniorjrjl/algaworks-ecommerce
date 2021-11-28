@@ -16,6 +16,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BasicoJPQLTest {
 
     @Test
+    public void usarDistinct(@EManager final EntityManager entityManager) {
+        var jpql = "select distinct p from Pedido p " +
+                " join p.itens i join i.produto pro " +
+                " where pro.id in (1, 2, 3, 4) ";
+
+        var typedQuery = entityManager.createQuery(jpql, Pedido.class);
+
+        var lista = typedQuery.getResultList();
+        assertThat(lista).isNotEmpty();
+
+        System.out.println(lista.size());
+    }
+
+    @Test
     public void ordenarResultados(@EManager final EntityManager entityManager) {
         var jpql = "select c from Cliente c order by c.nome asc"; // desc
 

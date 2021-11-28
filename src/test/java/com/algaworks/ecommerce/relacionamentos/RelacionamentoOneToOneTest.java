@@ -19,7 +19,7 @@ public class RelacionamentoOneToOneTest {
 
     @Test
     public void verificarRelacionamento(@EManager final EntityManager entityManager){
-        var pedido = entityManager.find(Pedido.class, 1);
+        var pedido = entityManager.find(Pedido.class, 5);
         var pagamentoCartao = new PagamentoCartao();
         pagamentoCartao.setNumeroCartao("123");
         pagamentoCartao.setStatus(PROCESSANDO);

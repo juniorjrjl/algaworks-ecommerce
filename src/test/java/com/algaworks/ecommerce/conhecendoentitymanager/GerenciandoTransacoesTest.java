@@ -29,7 +29,7 @@ public class GerenciandoTransacoesTest {
     }
 
     private void metodoDeNegocio(final EntityManager entityManager) {
-        var pedido = entityManager.find(Pedido.class, 1);
+        var pedido = entityManager.find(Pedido.class, 2);
         pedido.setStatus(PAGO);
         if (pedido.getPagamento() == null){
             throw new RuntimeException("O pedido ainda não foi pago");

@@ -1,4 +1,4 @@
-insert into produto (id, nome, preco, descricao, data_criacao) values (1, 'Kindle', 499.0, 'Conheça o novo Kindle, agora com iluminação embutida ajustável, que permite que você leia em ambientes abertos ou fechados, a qualquer hora do dia.', date_sub(sysdate(), interval 1 day));
+insert into produto (id, nome, preco, descricao, data_criacao) values (1, 'Kindle', 799.0, 'Conheça o novo Kindle, agora com iluminação embutida ajustável, que permite que você leia em ambientes abertos ou fechados, a qualquer hora do dia.', date_sub(sysdate(), interval 1 day));
 insert into produto (id, nome, preco, descricao, data_criacao) values (3, 'Câmera GoPro Hero 7', 1400.0, 'Desempenho 2x melhor.', date_sub(sysdate(), interval 1 day));
 insert into produto (id, nome, preco, descricao, data_criacao) values (4, 'Câmera GoPro Hero 8', 2400.0, 'Desempenho 4x melhor.', date_sub(sysdate(), interval 1 day));
 insert into produto (id, nome, preco, data_criacao, descricao) values (5, 'Câmera Canon 80D', 3500.0, sysdate(), 'O melhor ajuste de foco.');
@@ -33,7 +33,7 @@ insert into categoria (id, nome) values (3, 'Esportes');
 insert into categoria (id, nome) values (4, 'Futebol');
 insert into categoria (id, nome) values (5, 'Natação');
 insert into categoria (id, nome) values (6, 'Notebooks');
-insert into categoria (id, nome) values (7, 'Smartphones');
+insert into catego0ria (id, nome) values (7, 'Smartphones');
 insert into categoria (id, nome) values (8, 'Câmeras');
 
 insert into produto_categoria (produto_id, categoria_id) values (1, 2);

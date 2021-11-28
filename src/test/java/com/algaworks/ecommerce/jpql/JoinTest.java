@@ -20,7 +20,7 @@ public class JoinTest {
         var typedQuery = entityManager.createQuery(jpql, Pedido.class);
 
         var lista = typedQuery.getResultList();
-        assertThat(lista.size()).isOne();
+        assertThat(lista).isNotEmpty();
     }
 
     @Test

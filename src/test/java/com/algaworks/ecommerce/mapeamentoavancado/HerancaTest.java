@@ -44,7 +44,7 @@ public class HerancaTest {
 
     @Test
     public void incluirPagamentoPedido(@EManager final EntityManager entityManager) {
-        var pedido = entityManager.find(Pedido.class, 1);
+        var pedido = entityManager.find(Pedido.class, 5);
 
         PagamentoCartao pagamentoCartao = new PagamentoCartao();
         pagamentoCartao.setPedido(pedido);

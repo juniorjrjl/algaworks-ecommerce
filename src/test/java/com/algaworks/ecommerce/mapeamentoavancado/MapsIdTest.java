@@ -18,7 +18,7 @@ public class MapsIdTest {
 
     @Test
     public void inserirPagamento(@EManager final EntityManager entityManager){
-        var pedido = entityManager.find(Pedido.class, 1);
+        var pedido = entityManager.find(Pedido.class, 2);
 
         var notaFiscal = new NotaFiscal();
         notaFiscal.setPedido(pedido);
