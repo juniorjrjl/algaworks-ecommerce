@@ -4,7 +4,6 @@ import com.algaworks.ecommerce.extension.EMFactory;
 import com.algaworks.ecommerce.extension.EManager;
 import com.algaworks.ecommerce.extension.EntityManagerExtension;
 import com.algaworks.ecommerce.model.Categoria;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

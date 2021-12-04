@@ -17,7 +17,7 @@ repositories {
 }
 
 ext{
-    junitVersion = '5.8.1'
+    junitVersion = '5.8.2'
     hibernateVersion = '5.6.1.Final'
     lombokversion = '1.18.22'
 }
@@ -39,6 +39,10 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testImplementation 'org.assertj:assertj-core:3.21.0'
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    compileOnly "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}"
+    annotationProcessor "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}"
+
 }
 
 test {
