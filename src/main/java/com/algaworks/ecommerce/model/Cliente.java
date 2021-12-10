@@ -8,6 +8,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+@NamedStoredProcedureQuery(name = "compraram_acima_media", procedureName = "compraram_acima_media",
+        resultClasses = Cliente.class, parameters = {
+        @StoredProcedureParameter(name = "ano", type = Integer.class, mode = ParameterMode.IN)
+        })
 @Getter
 @Setter
 @Entity

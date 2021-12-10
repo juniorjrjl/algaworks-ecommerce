@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "item_pedido-produto.ItemPedido-Produto",
+                entities = {@EntityResult(entityClass = ItemPedido.class)})
+})
 @Getter
 @Setter
 @ToString(callSuper = true)

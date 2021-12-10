@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.listener.GenericoListener;
 import lombok.*;
 
@@ -8,9 +9,36 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "produto.Produto",
+                entities = {@EntityResult(entityClass = Produto.class)}),
+        @SqlResultSetMapping(name = "produtoFS.Produto",
+                entities = {@EntityResult(entityClass = Produto.class,
+                        fields = {
+                                @FieldResult(name = "id", column = "id"),
+                                @FieldResult(name = "nome", column = "nome"),
+                                @FieldResult(name = "descricao", column = "id"),
+                                @FieldResult(name = "preco", column = "preco"),
+                                @FieldResult(name = "foto", column = "foto"),
+                                @FieldResult(name = "dataCriacao", column = "data_criacao"),
+                                @FieldResult(name = "dataUltimaAtualizacao", column = "data_ultima_atualizacao"),
+                        })}),
+        @SqlResultSetMapping(name = "produtoCR.ProdutoDTO",
+                classes = {
+                        @ConstructorResult(targetClass = ProdutoDTO.class, columns = {
+                                @ColumnResult(name = "id", type = Integer.class),
+                                @ColumnResult(name = "nome", type = String.class)
+                        })})
+})
 @Getter
 @Setter
 @ToString(callSuper = true)
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "produto.listar",
+                query = "select id, nome, descricao, data_criacao, data_ultima_atualizacao, preco, foto from produto",
+                resultClass = Produto.class),
+        @NamedNativeQuery(name = "produtoFS.listar", query = "select * from produto", resultSetMapping = "produtoFS.Produto")
+})
 @NamedQueries({
         @NamedQuery(name = "Produto.listar", query = "select p from Produto p"),
         @NamedQuery(name = "Produto.listarPorCategoria", query = "select p " +
