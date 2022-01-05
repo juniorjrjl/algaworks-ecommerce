@@ -2,9 +2,14 @@ package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.model.converter.BooleanToSimNaoConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,14 +59,21 @@ import java.util.List;
 @Table(name = "produto", indexes = @Index(name = "idx_nome", columnList = "nome"))
 public class Produto extends EntidadeBaseInteger{
 
+    @NotBlank
     @Column(length = 100, nullable = false)
     private String nome;
 
     @Lob
     private String descricao;
 
+    @Positive
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal preco;
+
+    @Convert(converter = BooleanToSimNaoConverter.class)
+    @NotNull
+    @Column(length = 3, nullable = false)
+    private Boolean ativo = Boolean.FALSE;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
@@ -74,9 +86,12 @@ public class Produto extends EntidadeBaseInteger{
     @OneToOne(mappedBy = "produto")
     private Estoque estoque;
 
+    @NotNull
+    @PastOrPresent
     @Column(name = "data_criacao", updatable = false, nullable = false)
     private LocalDateTime dataCriacao;
 
+    @PastOrPresent
     @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao ;
 

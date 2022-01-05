@@ -1,8 +1,11 @@
 package com.algaworks.ecommerce.model;
 
 import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,15 +25,19 @@ import java.util.Map;
         indexes = {@Index(name = "idx_nome", columnList = "nome")})
 public class Cliente extends EntidadeBaseInteger{
 
+    @NotBlank
     @Column(length = 100, nullable = false)
     private String nome;
 
+    @CPF
+    @NotBlank
     @Column(length = 100, nullable = false)
     private String cpf;
 
     @Transient
     private String primeiroNome;
 
+    @NotNull
     @Column(table = "cliente_detalhe", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
