@@ -33,19 +33,21 @@ dependencies {
     implementation "org.hibernate:hibernate-core:${hibernateVersion}"
     implementation "org.projectlombok:lombok:${lombokversion}"
     implementation 'org.hibernate:hibernate-hikaricp:5.6.3.Final'
+    implementation 'org.hibernate:hibernate-validator:6.2.1.Final'
+    implementation 'org.glassfish:javax.el:3.0.1-b12'
+    implementation 'org.hibernate:hibernate-jcache:5.4.33'
+    implementation 'org.ehcache:ehcache:3.9.9'
 
     annotationProcessor "org.projectlombok:lombok:${lombokversion}"
 
     testAnnotationProcessor "org.projectlombok:lombok:${lombokversion}"
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
     testImplementation 'org.assertj:assertj-core:3.21.0'
-    testImplementation "org.hibernate:hibernate-testing:${hibernateVersion}"
+    //testImplementation "org.hibernate:hibernate-testing:${hibernateVersion}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 
     compileOnly "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}"
     annotationProcessor "org.hibernate:hibernate-jpamodelgen:${hibernateVersion}"
-    implementation 'org.hibernate:hibernate-validator:6.2.1.Final'
-    implementation 'org.glassfish:javax.el:3.0.1-b12'
 
 }
 
