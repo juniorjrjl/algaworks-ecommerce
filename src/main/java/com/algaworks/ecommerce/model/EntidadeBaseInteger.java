@@ -1,11 +1,11 @@
 package com.algaworks.ecommerce.model;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 
 import java.util.Objects;
 
@@ -20,6 +20,9 @@ public class EntidadeBaseInteger {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Integer id;
+
+    @Version
+    private Integer versao;
 
     @Override
     public boolean equals(final Object o) {

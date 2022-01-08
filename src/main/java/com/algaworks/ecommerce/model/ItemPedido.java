@@ -46,6 +46,9 @@ public class ItemPedido {
     @Column(nullable = false)
     private Integer quantidade;
 
+    @Version
+    private Integer versao;
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
