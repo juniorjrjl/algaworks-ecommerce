@@ -1,44 +1,24 @@
 package com.algaworks.ecommerce.concorrencia;
 
+import com.algaworks.ecommerce.extension.EMFactory;
+import com.algaworks.ecommerce.extension.EntityManagerFactoryExtension;
 import com.algaworks.ecommerce.model.Produto;
-import org.assertj.core.api.Assert;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.LockModeType;
-import javax.persistence.Persistence;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
+import static com.algaworks.ecommerce.util.ConcorrenciaUtil.esperar;
+import static com.algaworks.ecommerce.util.ConcorrenciaUtil.log;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(EntityManagerFactoryExtension.class)
 public class LockPessimistaTest {
 
-    private static EntityManagerFactory entityManagerFactory;
-
-    private static void esperar(long segundos) {
-        try {
-            TimeUnit.SECONDS.sleep(segundos);
-        } catch (InterruptedException e) {
-            log("erro na espera");
-        }
-    }
-
-    private static void log(Object obj, Object... args) {
-        System.out.println(String.format("[LOG " + System.currentTimeMillis() + "] " + obj, args));
-    }
-
-    @BeforeAll
-    public static void setUpBeforeClass() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
-    }
-
     @Test
-    public void usarLockPessimistaLockModeTypePessimisticRead() {
+    public void usarLockPessimistaLockModeTypePessimisticRead(@EMFactory EntityManagerFactory entityManagerFactory) {
         Runnable runnable1 = () -> {
             log("Iniciando Runnable 01.");
 
@@ -114,7 +94,7 @@ public class LockPessimistaTest {
     }
 
     @Test
-    public void usarLockPessimistaLockModeTypePessimisticWrite() {
+    public void usarLockPessimistaLockModeTypePessimisticWrite(@EMFactory EntityManagerFactory entityManagerFactory) {
         Runnable runnable1 = () -> {
             log("Iniciando Runnable 01.");
 
@@ -190,7 +170,7 @@ public class LockPessimistaTest {
     }
 
     @Test
-    public void misturarTiposDeLocks() {
+    public void misturarTiposDeLocks(@EMFactory EntityManagerFactory entityManagerFactory) {
         Runnable runnable1 = () -> {
             log("Iniciando Runnable 01.");
 
@@ -266,7 +246,7 @@ public class LockPessimistaTest {
     }
 
     @Test
-    public void usarLockNaTypedQuery() {
+    public void usarLockNaTypedQuery(@EMFactory EntityManagerFactory entityManagerFactory) {
         Runnable runnable1 = () -> {
             log("Iniciando Runnable 01.");
 
@@ -347,11 +327,6 @@ public class LockPessimistaTest {
         assertThat(produto.getDescricao()).startsWith("Descrição massa!");
 
         log("Encerrando método de teste.");
-    }
-
-    @AfterAll
-    public static void tearDownAfterClass() {
-        entityManagerFactory.close();
     }
 
 }

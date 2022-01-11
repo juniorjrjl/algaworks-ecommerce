@@ -1,49 +1,23 @@
 package com.algaworks.ecommerce.concorrencia;
 
+import com.algaworks.ecommerce.extension.EMFactory;
+import com.algaworks.ecommerce.extension.EntityManagerFactoryExtension;
 import com.algaworks.ecommerce.model.Produto;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-import java.util.concurrent.TimeUnit;
-
+import static com.algaworks.ecommerce.util.ConcorrenciaUtil.esperar;
+import static com.algaworks.ecommerce.util.ConcorrenciaUtil.log;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(EntityManagerFactoryExtension.class)
 public class LockOtimistaTest {
 
-    protected static EntityManagerFactory entityManagerFactory;
-
-    @BeforeAll
-    public static void setUpBeforeClass() {
-        entityManagerFactory = Persistence
-                .createEntityManagerFactory("Ecommerce-PU");
-    }
-
-    @AfterAll
-    public static void tearDownAfterClass() {
-        entityManagerFactory.close();
-    }
-
-    private static void log(Object obj, Object... args) {
-        System.out.println(
-                String.format("[LOG " + System.currentTimeMillis() + "] " + obj, args)
-        );
-    }
-
-    private static void esperar(long segundos) {
-        try {
-            TimeUnit.SECONDS.sleep(segundos);
-        } catch (InterruptedException e) {
-            log("erro na espera");
-        }
-    }
-
     @Test
-    public void usarLockOtimista(){
+    public void usarLockOtimista(@EMFactory EntityManagerFactory entityManagerFactory){
         Runnable runnable1 = () -> {
             var entityManager1 = entityManagerFactory.createEntityManager();
             entityManager1.getTransaction().begin();
