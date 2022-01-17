@@ -3,8 +3,6 @@ package com.algaworks.ecommerce.model;
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFicalListener;
 import lombok.*;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -73,12 +71,12 @@ public class Pedido  extends EntidadeBaseInteger /*implements PersistentAttribut
     private List<ItemPedido> itens;
 
     @ToString.Exclude
-    @LazyToOne(LazyToOneOption.NO_PROXY)
+    //@LazyToOne(LazyToOneOption.NO_PROXY)
     @OneToOne(mappedBy = "pedido"/*, fetch = FetchType.LAZY*/)
     private Pagamento pagamento;
 
     @ToString.Exclude
-    @LazyToOne(LazyToOneOption.NO_PROXY)
+    //@LazyToOne(LazyToOneOption.NO_PROXY)
     @OneToOne(mappedBy = "pedido"/*, fetch = FetchType.LAZY*/)
     private NotaFiscal notaFiscal;
 

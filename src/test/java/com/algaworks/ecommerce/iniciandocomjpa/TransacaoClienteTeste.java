@@ -28,7 +28,7 @@ public class TransacaoClienteTeste {
     public void inserirObjetoComMerge(@EManager final EntityManager entityManager){
         var cliente = new Cliente();
         cliente.setNome("Juca Barros");
-        cliente.setCpf("123");
+        cliente.setCpf("973.841.010-00");
         cliente.setSexo(SexoCliente.MASCULINO);
         entityManager.getTransaction().begin();
         cliente = entityManager.merge(cliente);

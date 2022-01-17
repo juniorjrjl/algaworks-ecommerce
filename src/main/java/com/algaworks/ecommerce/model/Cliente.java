@@ -21,8 +21,8 @@ import java.util.Map;
 @ToString(callSuper = true)
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"), foreignKey = @ForeignKey(name = "fk_cliente_cliente_detalhe"))
 @Table(name = "cliente",
-        uniqueConstraints = {@UniqueConstraint(name = "unq_cpf", columnNames = {"cpf"})},
-        indexes = {@Index(name = "idx_nome", columnList = "nome")})
+        uniqueConstraints = {@UniqueConstraint(name = "unq_cliente_cpf", columnNames = {"cpf"})},
+        indexes = {@Index(name = "idx_cliente_nome", columnList = "nome")})
 public class Cliente extends EntidadeBaseInteger{
 
     @NotBlank

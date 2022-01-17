@@ -15,7 +15,13 @@ import javax.validation.constraints.NotNull;
 @DiscriminatorColumn(name = "tipo_pagamento")
 @Entity
 @Table(name = "pagamento")
-public abstract class Pagamento extends EntidadeBaseInteger{
+public abstract class Pagamento /*extends EntidadeBaseInteger*/{
+
+    @Id
+    private Integer id;
+
+    @Version
+    private Integer versao;
 
     @NotNull
     @MapsId

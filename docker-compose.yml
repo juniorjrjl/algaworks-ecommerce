@@ -13,6 +13,7 @@ services:
       - box:/box
     depends_on:
       - db
+      - db2
   db:
     image: mysql:8.0.26
     environment:
@@ -20,6 +21,15 @@ services:
       - MYSQL_DATABASE=algaworks_ecommerce
     ports:
       - "3306:3306"
+  db2:
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=algaworks_ecommerce
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+
   box:
     image: busybox
     volumes:
@@ -28,3 +38,4 @@ services:
 volumes:
   db:
   box:
+  db2:

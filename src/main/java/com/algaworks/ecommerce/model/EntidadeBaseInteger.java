@@ -10,6 +10,7 @@ import javax.persistence.Version;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class EntidadeBaseInteger {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE/*IDENTITY*/)
     private Integer id;
 
     @Version

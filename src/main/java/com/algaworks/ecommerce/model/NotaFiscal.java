@@ -13,7 +13,13 @@ import java.util.Date;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "nota_fiscal")
-public class NotaFiscal  extends EntidadeBaseInteger{
+public class NotaFiscal  /*extends EntidadeBaseInteger*/{
+
+    @Id
+    private Integer id;
+
+    @Version
+    private Integer versao;
 
     @NotNull
     @MapsId
@@ -24,6 +30,7 @@ public class NotaFiscal  extends EntidadeBaseInteger{
     @NotEmpty
     @Lob
     @Column(nullable = false)
+    //@Type(type = "org.hibernate.type.BinaryType")
     private byte[] xml;
 
     @PastOrPresent

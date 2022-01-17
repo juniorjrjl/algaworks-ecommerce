@@ -56,14 +56,14 @@ import java.util.List;
 })
 @EntityListeners({GenericoListener.class})
 @Entity
-@Table(name = "produto", indexes = @Index(name = "idx_nome", columnList = "nome"))
+@Table(name = "produto", indexes = @Index(name = "idx_produto_nome", columnList = "nome"))
 public class Produto extends EntidadeBaseInteger{
 
     @NotBlank
     @Column(length = 100, nullable = false)
     private String nome;
 
-    @Lob
+    //@Lob
     private String descricao;
 
     @Positive
@@ -105,6 +105,7 @@ public class Produto extends EntidadeBaseInteger{
     private List<Atributo> atributos;
 
     @Lob
+    //@Type(type = "org.hibernate.type.BinaryType")
     private byte[] foto;
 
 }
